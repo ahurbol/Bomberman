@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Text?>
+<GridPane fx:controller="agh.ics.oop.gui.App"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <gridLinesVisible>false</gridLinesVisible>
+
+    <Text text="Welcome"
+          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnSpan="2"/>
+
+<!--    <Label text="width:"-->
+<!--           GridPane.columnIndex="0" GridPane.rowIndex="1"/>-->
+
+<!--    <TextField fx:id="width" text="7"-->
+<!--            GridPane.columnIndex="1" GridPane.rowIndex="1"/>-->
+
+<!--    <Label text="height:"-->
+<!--           GridPane.columnIndex="0" GridPane.rowIndex="2"/>-->
+
+<!--    <TextField fx:id="height" text="7"-->
+<!--            GridPane.columnIndex="1" GridPane.rowIndex="2"/>-->
+
+<!--    <CheckBox fx:id="magicMapWithNoBorders" mnemonicParsing="false" selected="true"-->
+<!--              text="magicMapWithNoBorders on"-->
+<!--              GridPane.columnIndex="1" GridPane.rowIndex="7"/>-->
+<!--    -->
+
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="Start Game"
+                onAction="#startGame"/>
+    </HBox>
+
+</GridPane>
