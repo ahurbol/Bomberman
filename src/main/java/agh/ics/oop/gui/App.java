@@ -10,18 +10,23 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class App extends Application {
     private GameMap gameMap;
     private static Stage stage;
     private Scene scene;
-    private Player player1 = new Player();
-    private Player player2 = new Player();
+    private Player player1;
+    private Player player2;
+
 
 
     public static void main(String[] args) {
@@ -31,22 +36,15 @@ public class App extends Application {
     @FXML
     protected void startGame() {
         gameMap = new GameMap();
+        player1 = new Player(gameMap);
+        player2 = new Player(gameMap);
         gameMap.putPlayers(player1, player2);
 
-        VBox vBox = new VBox(new Text(""));
-        vBox.setSpacing(10);
-        HBox boards = new HBox(vBox);
-        boards.setSpacing(200);
-        boards.setAlignment(Pos.CENTER);
-
-        VBox buttonsAndBoards = new VBox(boards);
-        ScrollPane wholeWindow = new ScrollPane(buttonsAndBoards);
-        wholeWindow.setFitToWidth(true);
-        wholeWindow.setFitToHeight(true);
-        Grid grid = new Grid(gameMap);
+        VBox vBox = new VBox();
+        Grid grid = new Grid(gameMap, player1, player2);
         grid.update();
         vBox.getChildren().add(grid.getGrid());
-        this.scene = new Scene(wholeWindow);
+        this.scene = new Scene(vBox, 450,450);
         this.scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
                 case W -> gameMap.tryMove(player1, Direction.UP);
@@ -62,9 +60,13 @@ public class App extends Application {
             }
             grid.update();
         });
+        stage.setOnCloseRequest(event -> {
+            stage.close();
+            System.exit(0);
+        });
         stage.setScene(this.scene);
-        stage.setResizable(true);
-        stage.setMaximized(true);
+        stage.show();
+
     }
 
 

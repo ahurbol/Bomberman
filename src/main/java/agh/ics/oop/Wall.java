@@ -1,22 +1,15 @@
 package agh.ics.oop;
 
+import java.util.Objects;
+
 public class Wall {
-    public Wall() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Wall{}";
-    }
-
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        return (obj instanceof Wall);
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public int hashCode(){
+        return Objects.hash();
     }
 }
